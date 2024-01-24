@@ -1,4 +1,4 @@
-
+import java.math.BigInteger;
 
 public class Main {
     //Question 1
@@ -22,7 +22,7 @@ public class Main {
         int start = 0;
 
         for(int i=0; i < text1.length(); i++){
-            for(int j=0; j < text2.length(); j++){
+            for(int j=0; j < text2.length(); j++){ // O(n) * O(1) = O(n)
                 int length = 0;
                 int count1 = i;
                 int count2 = j;
@@ -44,11 +44,15 @@ public class Main {
 
     //Question 3
     public int[] notFibbonacci(int num){
-        int[] ans = new int[num];
-        ans[0] = 0;
-        ans[1] = 1;
-        for(int i= 2; i<num; i++){
-            ans[i] = (3 * ans[i-1]) + (2 * ans[i-2]);
+        BigInteger[] ans = new BigInteger[num];
+        ans[0] = BigInteger.valueOf(0);
+        ans[1] = BigInteger.valueOf(1);
+        // for the formula
+        BigInteger three = new BigInteger("3");
+        BigInteger two = new BigInteger("2");
+        for(int i= 2; i< ans.length; i++){
+            ans[i] = (three.multiply(ans[i-1])) + (two.multiply(ans[i-2]));
+            //ans[i] = (3 * ans[i-1] + (2 * ans[i-2]))
             //System.out.println(ans[i]);
         }
         return ans;
@@ -89,7 +93,7 @@ public class Main {
 
 
     /* Question 6
-    Question 1:
+    Question 1:O(n1 * n2) the length of the first word * the length of the second word
     Question 2: O(n^3) because of the nested for loops and  while loop
     Question 3: O(n)
     Question 4: O(logn) because it's a binary search
@@ -97,8 +101,8 @@ public class Main {
      */
     public static void main(String[] args) {
         Main m = new Main();
-//        int[] seq = m.notFibbonacci(10);
-//        System.out.println(Arrays.asList(seq));
+        int[] seq = m.notFibbonacci(10);
+        System.out.println(Arrays.asList(seq));
         int ans = m.whereInSequence(11);
         int[] arr = {2,5,8,5,9};
         System.out.println(ans);
