@@ -1,4 +1,4 @@
-import java.math.BigInteger;
+import java.util.Arrays;
 
 public class Main {
     //Question 1
@@ -43,27 +43,26 @@ public class Main {
     }
 
     //Question 3
-    public int[] notFibbonacci(int num){
-        BigInteger[] ans = new BigInteger[num];
-        ans[0] = BigInteger.valueOf(0);
-        ans[1] = BigInteger.valueOf(1);
-        // for the formula
-        BigInteger three = new BigInteger("3");
-        BigInteger two = new BigInteger("2");
-        for(int i= 2; i< ans.length; i++){
-            ans[i] = (three.multiply(ans[i-1])) + (two.multiply(ans[i-2]));
-            //ans[i] = (3 * ans[i-1] + (2 * ans[i-2]))
-            //System.out.println(ans[i]);
+    public Long[] notFibbonacci(int num){
+        Long[] ans = new Long[num];
+        ans[0] = 0L;
+        ans[1] = 1L;
+        //to find every other value in sequence
+        for(int i = 2; i < num; i++){
+            ans[i] = (3 * ans[i - 1]) + (2 * ans[i-2]);
         }
         return ans;
     }
 
+
     //Question 4
     public int whereInSequence(int num){
-        int[] seq = notFibbonacci(num);
+        //the number that your looking for has to be smaller than the maximum number on the list
+        //if that number was inserted
+        Long[] seq = notFibbonacci(num);
         int left = 0;
         int right = seq.length;
-
+        //binary search
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (seq[mid] == num) {
@@ -83,8 +82,8 @@ public class Main {
     public int removeElement(int[] nums, int val){
         int count = 0;
         for(int i = 0; i < nums.length; i++){
-            if(nums[i] != val){
-                nums[count] = nums[i];
+            if(nums[i] != val){ //where the value in the array doesn't equal know value
+                nums[count] = nums[i];  //assign next available index to that value & increase count
                 count ++;
             }
         }
@@ -101,13 +100,31 @@ public class Main {
      */
     public static void main(String[] args) {
         Main m = new Main();
-        int[] seq = m.notFibbonacci(10);
-        System.out.println(Arrays.asList(seq));
-        int ans = m.whereInSequence(11);
+        System.out.println("Question 1:");
+        System.out.println("Input: text1 = abcde, text2 = ace");
+        System.out.println("Output: " + m.commonSubsequence("abcde","ace"));
+        System.out.println();
+
+        System.out.println("Question 2:");
+        System.out.println("Input: text1 = catsarecool, text2 = arec");
+        System.out.println("Output: " + m.commonSubstring("catsarecool", "arec"));
+        System.out.println();
+
+        System.out.println("Question 3:");
+        System.out.println("Input: num = 8");
+        System.out.println("Output: " + Arrays.toString(m.notFibbonacci(8)));
+        System.out.println();
+
+        System.out.println("Question 4: ");
+        System.out.println("Input: num = 11");
+        System.out.println("Output: " + m.whereInSequence(11));
+        System.out.println();
+
+        System.out.println("Question 5: ");
         int[] arr = {2,5,8,5,9};
-        System.out.println(ans);
-        System.out.println(m.commonSubstring("catsarecool", "arec"));
-        System.out.println(m.commonSubsequence("abcde","acde"));
-        System.out.println(m.removeElement(arr,5));
+        System.out.println("Input: array = {2,5,8,5,9}, value = 5");
+        System.out.println("Output: " + m.removeElement(arr,5));
+        System.out.println();
+
     }
 }
