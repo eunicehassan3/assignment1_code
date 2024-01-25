@@ -43,7 +43,7 @@ public class Main {
     }
 
     //Question 3
-    public Long[] notFibbonacci(int num){
+    public Long[] notFibonacci(int num){
         Long[] ans = new Long[num];
         ans[0] = 0L;
         ans[1] = 1L;
@@ -59,7 +59,7 @@ public class Main {
     public int whereInSequence(int num){
         //the number that your looking for has to be smaller than the maximum number on the list
         //if that number was inserted
-        Long[] seq = notFibbonacci(num);
+        Long[] seq = notFibonacci(num);
         int left = 0;
         int right = seq.length;
         //binary search
@@ -90,14 +90,9 @@ public class Main {
         return count;
     }
 
+    //Question 6
+    // On separate document
 
-    /* Question 6
-    Question 1:O(n1 * n2) the length of the first word * the length of the second word
-    Question 2: O(n^3) because of the nested for loops and  while loop
-    Question 3: O(n)
-    Question 4: O(logn) because it's a binary search
-    Question 5: O(n) because it's a for loop
-     */
     public static void main(String[] args) {
         Main m = new Main();
         System.out.println("Question 1:");
@@ -112,7 +107,7 @@ public class Main {
 
         System.out.println("Question 3:");
         System.out.println("Input: num = 8");
-        System.out.println("Output: " + Arrays.toString(m.notFibbonacci(8)));
+        System.out.println("Output: " + Arrays.toString(m.notFibonacci(8)));
         System.out.println();
 
         System.out.println("Question 4: ");
