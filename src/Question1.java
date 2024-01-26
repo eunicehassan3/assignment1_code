@@ -1,6 +1,6 @@
 public class Question1 {
     //Question 1
-    public int commonSubsequence(String text1, String text2) {
+    public static int commonSubsequence(String text1, String text2) {
         int[][] grid = new int[text1.length() + 1][text2.length() + 1];
         for (int i = text1.length() - 1; i >= 0; i--) { //start from bottom of grid and work way up
             for (int j = text2.length() - 1; j >= 0; j--) { //start from bottom of grid and work way up
